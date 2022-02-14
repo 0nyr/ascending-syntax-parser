@@ -1,5 +1,6 @@
-#include "inc/lexer/Symbol.hpp"
 #include <iostream>
+
+#include "../../inc/lexer/Symbol.hpp"
 
 void Symbol::Display() {
    cout<<Labels[ident];

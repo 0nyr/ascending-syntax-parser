@@ -6,7 +6,7 @@ CFLAGS=-I $(INCLUDE) -march=native -O3
 LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11
 
-SRCS_main=$(wildcard src/main/**/*.cpp) $(wildcard src/main/*.cpp)
+SRCS_main=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp)
 SRCS_tests=$(wildcard src/tests/**/*.cpp) $(wildcard src/tests/*.cpp)
 SRCS_perfs=$(wildcard src/performances/**/*.cpp) $(wildcard src/performances/*.cpp)
 
