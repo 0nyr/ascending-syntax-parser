@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "inc/exception/NoActionException.hpp"
 #include "inc/state/State.hpp"
+#include "inc/exception/NoActionException.hpp"
 
 bool I0::Action(Symbol* a)
 {
