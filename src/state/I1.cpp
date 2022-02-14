@@ -5,6 +5,7 @@
 
 bool I1::Action(Symbol* a)
 {
+    
     if (a->ident == INT)
     {
         this->d4();

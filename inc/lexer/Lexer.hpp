@@ -2,7 +2,6 @@
 
 #include <string>
 #include "inc/lexer/Symbol.hpp"
-using namespace std;
 
 class Lexer {
 

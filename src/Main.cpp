@@ -8,8 +8,23 @@
 
 void main()
 {
-    Automaton automaton = Automaton();
-    automaton.Parsing();
+
+    // declare expression to be recognized
+    string inputExpression("(1+34)*123");
+
+    // check if the expression is valid
+    Automaton automaton = Automaton(
+        inputExpression
+    );
+    bool isExpressionValid = automaton.Parsing();
+    if (isExpressionValid)
+    {
+        std::cout<<"Expression is valid"<<std::endl;
+    }
+    else
+    {
+        std::cout<<"Expression is invalid"<<std::endl;
+    }
 
 }
 

@@ -5,7 +5,15 @@
 #include "inc/lexer/Symbol.hpp"
 
 // NOTE: dX = shift with transition to state X
-// NOTE: rX = reduce with production X
+// There are 10 states in the automaton
+
+// NOTE: rX = reduce with grammar rule X
+// Grammar rules:
+// r1) E' -> E
+// r2) E -> E + E
+// r3) E -> E * E
+// r4) E -> E ( E )
+// r5) E -> val
 
 class State
 {
