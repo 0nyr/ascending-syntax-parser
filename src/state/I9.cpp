@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "inc/exception/NoActionException.hpp"
-#include "inc/state/State.hpp"
+#include "../../inc/exception/NoActionException.hpp"
+#include "../../inc/state/State.hpp"
 
 bool I9::Action(Symbol* a)
 {
@@ -12,10 +12,15 @@ bool I9::Action(Symbol* a)
         a->ident == END
         )
     {
-        this->r4();
+        this->r4(a);
     }
     else 
     {
         throw NoActionException();
     }
 }
+
+void I9::r4(Symbol* a)
+{
+    // TODO
+} 

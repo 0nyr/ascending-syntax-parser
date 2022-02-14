@@ -1,19 +1,22 @@
 #pragma once
 #include <vector>
 
-#include "inc/state/State.hpp"
-#include "inc/lexer/Symbol.hpp"
+#include "lexer/Symbol.hpp"
+
+class State;
 
 class Automaton
 {
     public:
+        Automaton();
+        virtual ~Automaton();
+        bool Parsing();
+
         std::vector<Symbol*> chain;
         std::vector<Symbol*> symbolStack;
 
         std::vector<State*> states;
         std::vector<State*> stateStack;
 
-        Automaton();
-        virtual ~Automaton();
-        bool Parsing();
+        
 };

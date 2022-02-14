@@ -1,9 +1,10 @@
 #include <iostream>
 
-#include "inc/exception/NoActionException.hpp"
-#include "inc/exception/NoRuleException.hpp"
-#include "inc/lexer/Lexer.hpp"
-#include "inc/Automaton.hpp"
+#include "../inc/exception/NoActionException.hpp"
+#include "../inc/exception/NoRuleException.hpp"
+#include "../inc/lexer/Lexer.hpp"
+#include "../inc/Automaton.hpp"
+#include "../inc/state/State.hpp"
 
 Automaton::Automaton()
 {
