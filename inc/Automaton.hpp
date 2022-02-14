@@ -9,7 +9,7 @@ class Automaton
 {
     public:
         Automaton();
-        virtual ~Automaton();
+        ~Automaton();
         bool Parsing();
 
         std::vector<Symbol*> chain;

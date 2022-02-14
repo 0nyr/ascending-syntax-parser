@@ -46,3 +46,8 @@ void I0::d3(Symbol* a)
     // -> Add symbol to the stack
     automaton.symbolStack.push_back(a);
 }
+
+void I0::transition(State* s)
+{
+    // TODO
+}

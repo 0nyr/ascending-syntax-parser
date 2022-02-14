@@ -41,6 +41,11 @@ Automaton::Automaton()
     states.push_back(new I9(*this));
 }
 
+Automaton::~Automaton(){
+    states.clear();
+    chain.clear();
+}
+
 bool Automaton::Parsing()
 {
     // LR(1) parsing 

@@ -10,8 +10,8 @@ class State
         State(
             Automaton& automaton
         ) : automaton(automaton) {};
-        virtual ~State(); 
-        virtual bool Action(Symbol* a);
+        ~State(){}; 
+        bool Action(Symbol* a){};
     
     protected:
         Automaton& automaton;
@@ -23,7 +23,7 @@ class I0 : public State
         I0(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I0();
+        ~I0(){};
         bool Action(Symbol* a);
 
         void d2(Symbol* a);
@@ -37,7 +37,7 @@ class I1 : public State
         I1(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I1();
+        ~I1(){};
         bool Action(Symbol* a);
         
         void d4(Symbol* a);
@@ -50,7 +50,7 @@ class I2 : public State
         I2(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I2();
+        ~I2(){};
         bool Action(Symbol* a);
         
         void d2(Symbol* a);
@@ -64,7 +64,7 @@ class I3 : public State
         I3(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I3();
+        ~I3(){};
         bool Action(Symbol* a);
         
         void r5(Symbol* a);
@@ -76,7 +76,7 @@ class I4 : public State
         I4(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I4();
+        ~I4(){};
         bool Action(Symbol* a);
         
         void d2(Symbol* a);
@@ -90,7 +90,7 @@ class I5 : public State
         I5(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I5();
+        ~I5(){};
         bool Action(Symbol* a);
         
         void d2(Symbol* a);
@@ -104,7 +104,7 @@ class I6 : public State
         I6(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I6();
+        ~I6(){};
         bool Action(Symbol* a);
         
         void d4(Symbol* a);
@@ -118,7 +118,7 @@ class I7 : public State
         I7(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I7();
+        ~I7(){};
         bool Action(Symbol* a);
         
         void r2(Symbol* a);
@@ -131,7 +131,7 @@ class I8 : public State
         I8(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I8();
+        ~I8(){};
         bool Action(Symbol* a);
         
         void r3(Symbol* a);
@@ -143,7 +143,7 @@ class I9 : public State
         I9(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I9();
+        ~I9(){};
         bool Action(Symbol* a);
         
         void r4(Symbol* a);

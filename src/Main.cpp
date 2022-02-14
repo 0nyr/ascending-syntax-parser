@@ -10,7 +10,7 @@ int main()
 {
     Automaton automaton = Automaton();
     automaton.Parsing();
-
+    
     return 0;
 }
 
