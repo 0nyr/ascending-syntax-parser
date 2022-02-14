@@ -1,64 +1,65 @@
-BINS=bin/main bin/tests bin/performances
-INCLUDE=include/main
+# echo -e colors
+# WARN : don't put " and use the echo command, not echo -e
+LIGHT_ORANGE_COLOR=\e[38;5;216m
+TURQUOISE_COLOR=\e[38;5;43m
+LIGHT_BLUE_COLOR=\e[38;5;153m
+RED_COLOR=\e[38;5;196m
+NO_COLOR=\e[0m
+
+# vars
+ECHO = @echo # @echo hides this command in terminal, not its output
+
+BIN=bin/main
+INCLUDE=inc/
 
 CC=g++
-CFLAGS=-I $(INCLUDE) -march=native -O3
+CFLAGS=-I $(INCLUDE) -march=native -O3 -D MAP -D NDEBUG
 LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11
 
-SRCS_main=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp)
-SRCS_tests=$(wildcard src/tests/**/*.cpp) $(wildcard src/tests/*.cpp)
-SRCS_perfs=$(wildcard src/performances/**/*.cpp) $(wildcard src/performances/*.cpp)
+SRCS=$(wildcard src/**/*.cpp) $(wildcard src/*.cpp) $(wildcard *.cpp)
+OBJS=$(SRCS:src/%.cpp=obj/%.o)
 
-OBJS_main=$(SRCS_main:src/%.cpp=obj/%.o)
-OBJS_tests=$(SRCS_tests:src/%.cpp=obj/%.o)
-OBJS_perfs=$(SRCS_perfs:src/%.cpp=obj/%.o)
+# targets
+# set default target : https://stackoverflow.com/questions/2057689/how-does-make-app-know-default-target-to-build-if-no-target-is-specified
+.DEFAULT_GOAL := default
+.PHONY: default build clean run rebuild all what dirs
 
-# c'est un peu sale mais suffisant ; on pourrait aussi mettre tous les objets communs aux tests et au main dans un sous
-# dossier "common" et ne laisser à la racine de src/main que les fichiers concernant l'exécution (donc pas modele etc)
-OBJS_tests_excluded_from_main=obj/main/main.o
+default: build
 
+build: $(BIN)
 
-all: $(BINS)
-
-bin/main: $(OBJS_main)
-	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
-
-bin/tests: $(OBJS_tests) $(filter-out $(OBJS_tests_excluded_from_main),$(OBJS_main))
-	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
-
-bin/performances: $(OBJS_perfs) $(filter-out $(OBJS_tests_excluded_from_main),$(OBJS_main))
+$(BIN): $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 obj/%.o: src/%.cpp
-	mkdir -p $(dir $@)
-	$(CC) -o $@ -c $^ $(CFLAGS) -D NDEBUG
-
-obj/tests/%.o: src/tests/%.cpp
-	mkdir -p $(dir $@)
-	$(CC) -o $@ -c $^ $(CFLAGS) -I include/tests -D MAP
-
-obj/performances/%.o: src/performances/%.cpp
-	mkdir -p $(dir $@)
-	$(CC) -o $@ -c $^ $(CFLAGS) -I include/performances -D NDEBUG
+	$(CC) -o $@ -c $^ $(CFLAGS)
 
 clean:
 	rm -rf bin/* obj/*
 
-run: bin/main
-	./bin/main
+run: $(BIN)
+	$(ECHO) "$(TURQUOISE_COLOR)*** Executing code *** $(NO_COLOR)"
+	./$(BIN)
 
-run_tests: bin/tests
-	./bin/tests
 
-run_perfs: bin/performances
-	./bin/performances
+# Determine this makefile's path.
+# Be sure to place this BEFORE `include` directives, if any.
+THIS_FILE := $(lastword $(MAKEFILE_LIST))
+
+rebuild:
+	@$(MAKE) -f $(THIS_FILE) clean
+	@$(MAKE) -f $(THIS_FILE) build
+
+all: 
+	@$(MAKE) -f $(THIS_FILE) clean
+	@$(MAKE) -f $(THIS_FILE) build
+	@$(MAKE) -f $(THIS_FILE) run
+
+what:
+	pwd
+	ls -alt
 
 dirs:
 	mkdir -p bin/
 	mkdir -p obj/
-	mkdir -p lib/
-	mkdir -p src/
-	mkdir -p include/
-
-.PHONY: clean run dirs all run_tests

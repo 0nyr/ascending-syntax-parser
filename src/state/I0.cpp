@@ -5,6 +5,7 @@
 
 bool I0::Action(Symbol* a)
 {
+    Symbol* a = automaton.symbolStack.back();
     if(a->ident == OPENPAR)
     {
         this->d2(a);

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "../inc/exception/NoActionException.hpp"
 #include "../inc/exception/NoRuleException.hpp"
@@ -6,21 +7,21 @@
 #include "../inc/Automaton.hpp"
 #include "../inc/state/State.hpp"
 
-Automaton::Automaton()
+Automaton::Automaton(string& inputExpression)
 {
+    // init attributes 
+    cursorIndex = 0;
+
     // Lexical Analysis
     // chain of symbols and stack
 
-    // declare chain to be recognized
-    string chaine("(1+34)*123");
-
     // create list of symbols with lexer
-    Lexer l(chaine);
+    Lexer l(inputExpression);
     Symbol * s;
     while((s = l.Consult())->ident != END) {
         s->Display();
-        cout<<endl;
-        chain.push_back(s);
+        std::cout<<std::endl;
+        symbols.push_back(s);
         l.Advance();
     }
 
@@ -46,23 +47,29 @@ bool Automaton::Parsing()
     // LR(1) parsing 
     // WARN: Don't get mixed up between stacks and arrays.
     stateStack.push_back(states[0]);
-    symbolStack.push_back(chain[0]);
+    symbolStack.push_back(symbols[0]);
     bool isActionAccepted = false;
     do {
+        // action
         try 
         {
-            isActionAccepted = stateStack.back()->Action(chain.back());
+            isActionAccepted = stateStack.back()->Action(
+                symbolStack[cursorIndex]
+            );
         }
         catch (NoActionException& e)
         {
-            cout<<"No action for this symbol"<<endl;
+            std::cout<<"No action for this symbol"<<std::endl;
             return false;
         }
         catch (NoRuleException& e)
         {
-            cout<<"No rule for this state"<<endl;
+            std::cout<<"No rule for this state"<<std::endl;
             return false;
         }
+
+        // cursor increment
+        cursorIndex++;
     } while (!isActionAccepted);
 
     // Action Accepted
