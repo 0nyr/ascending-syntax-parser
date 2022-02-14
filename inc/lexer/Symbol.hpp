@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;
 
-enum Identifier { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR, EXPR };
+enum Identifier { OPENPAR, CLOSEPAR, PLUS, MULT, INT, END, ERREUR, EXPR };
 
-const string Labels[] = { "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR", "EXPR" };
+const string Labels[] = { "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "END", "ERREUR", "EXPR" };
 
 class Symbol {
    public:

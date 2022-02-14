@@ -4,7 +4,7 @@ Symbol * Lexer::Consult() {
    if (!buffer) {
 
       if (head==flux.length())
-         buffer = new Symbol(FIN);
+         buffer = new Symbol(END);
       else
       {
 

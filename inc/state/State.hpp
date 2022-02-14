@@ -4,6 +4,9 @@
 #include "inc/Automaton.hpp"
 #include "inc/lexer/Symbol.hpp"
 
+// NOTE: dX = shift with transition to state X
+// NOTE: rX = reduce with production X
+
 class State
 {
     public:
@@ -20,19 +23,23 @@ class State
 class I0 : public State
 {
     public:
-        I0();
+        I0(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I0();
         bool Action(Symbol* a);
 
         void d2();
-        void d3();
+        void d3(Symbol* a);
         void transition(State* nextState);
 };
 
 class I1 : public State
 {
     public:
-        I1();
+        I1(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I1();
         bool Action(Symbol* a);
         
@@ -43,7 +50,9 @@ class I1 : public State
 class I2 : public State
 {
     public:
-        I2();
+        I2(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I2();
         bool Action(Symbol* a);
         
@@ -55,17 +64,21 @@ class I2 : public State
 class I3 : public State
 {
     public:
-        I3();
+        I3(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I3();
         bool Action(Symbol* a);
         
-        void r5();
+        void r5(Symbol* a);
 };
 
 class I4 : public State
 {
     public:
-        I4();
+        I4(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I4();
         bool Action(Symbol* a);
         
@@ -77,7 +90,9 @@ class I4 : public State
 class I5 : public State
 {
     public:
-        I5();
+        I5(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I5();
         bool Action(Symbol* a);
         
@@ -89,7 +104,9 @@ class I5 : public State
 class I6 : public State
 {
     public:
-        I6();
+        I6(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I6();
         bool Action(Symbol* a);
         
@@ -101,7 +118,9 @@ class I6 : public State
 class I7 : public State
 {
     public:
-        I7();
+        I7(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I7();
         bool Action(Symbol* a);
         
@@ -112,7 +131,9 @@ class I7 : public State
 class I8 : public State
 {
     public:
-        I8();
+        I8(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I8();
         bool Action(Symbol* a);
         
@@ -122,7 +143,9 @@ class I8 : public State
 class I9 : public State
 {
     public:
-        I9();
+        I9(
+            Automaton& automaton
+        ) : State(automaton) {};
         virtual ~I9();
         bool Action(Symbol* a);
         

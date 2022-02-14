@@ -8,12 +8,12 @@ class Automaton
 {
     public:
         std::vector<Symbol*> chain;
-        std::vector<Symbol*> SymbolStack;
+        std::vector<Symbol*> symbolStack;
 
         std::vector<State*> states;
         std::vector<State*> stateStack;
 
         Automaton();
         virtual ~Automaton();
-        void Parsing();
+        bool Parsing();
 };
