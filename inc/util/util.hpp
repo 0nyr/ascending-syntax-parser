@@ -26,6 +26,46 @@
 #endif
 
 
+template <typename T>
+std::string vectorToString(std::vector<T> const & vector) {
+    std::string result = "[";
+    for (int i = 0; i < vector.size(); i++) {
+        if (i != 0) {
+            result += ", ";
+        }
+        result += std::to_string(vector[i]);
+    }
+    result += "]";
+    return result;
+}
+
+template<>
+std::string vectorToString<Symbol*>(std::vector<Symbol*> const & vector) {
+    std::string result = "[";
+    for (int i = 0; i < vector.size(); i++) {
+        if (i != 0) {
+            result += ", ";
+        }
+        result += vector[i]->ToString();
+    }
+    result += "]";
+    return result;
+}
+
+template<>
+std::string vectorToString<State*>(std::vector<State*> const & vector) {
+    std::string result = "[";
+    for (int i = 0; i < vector.size(); i++) {
+        if (i != 0) {
+            result += ", ";
+        }
+        result += vector[i]->ToString();
+    }
+    result += "]";
+    return result;
+}
+
+
 // function that prints a std::vector
 template <typename T>
 void printVector(std::string const & vectorName, std::vector<T> const & vector) {

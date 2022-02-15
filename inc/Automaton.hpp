@@ -22,4 +22,7 @@ class Automaton
         Automaton(string& inputExpression);
         ~Automaton();
         bool Parsing();
+    
+    private:
+        void printCurrentSituation();
 };

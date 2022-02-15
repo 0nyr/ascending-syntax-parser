@@ -50,5 +50,10 @@ void I0::d3(Symbol* a)
 
 void I0::transition(State* state)
 {
-    // TODO: implement
+        // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[6]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }
