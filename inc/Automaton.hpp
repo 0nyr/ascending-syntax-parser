@@ -8,15 +8,15 @@ class State;
 class Automaton
 {
     public:
-        Automaton();
-        ~Automaton();
-        bool Parsing();
-
-        std::vector<Symbol*> chain;
+        std::vector<Symbol*> symbols;
         std::vector<Symbol*> symbolStack;
 
         std::vector<State*> states;
         std::vector<State*> stateStack;
 
-        
+        std::size_t cursorIndex=0; // used for tracking look ahead symbol (in yellow in the example picture)
+
+        Automaton(string& inputExpression);
+        ~Automaton();
+        bool Parsing();
 };

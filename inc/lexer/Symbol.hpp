@@ -12,6 +12,7 @@ class Symbol {
       Symbol(Identifier i) : ident(i) {  }
       virtual ~Symbol() { }
       virtual void Display();
+      virtual int getValue();
       Identifier ident;
 };
 
@@ -20,7 +21,7 @@ class Int : public Symbol {
       Int(int v) : Symbol(INT), value(v) { }
       ~Int() { }
       virtual void Display();
-      
+      int getValue();
       operator int() const { return value; } // cast entier
 
    protected:
@@ -29,9 +30,11 @@ class Int : public Symbol {
 
 class Expr : public Symbol {
    public:
-      Expr(int i) : Symbol(EXPR) {}
+      Expr(int i) : Symbol(EXPR), value(i) {}
       ~Expr() {}
       virtual void Display();
+      int getValue();
    protected:
+      int value;
 };
 

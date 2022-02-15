@@ -31,7 +31,7 @@ void I0::d2(Symbol* a)
     automaton.stateStack.push_back(automaton.states[2]);
 
     // -> Add symbol to the stack
-    automaton.symbolStack.push_back(a);
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }
 
 // We are now at state 0
@@ -44,7 +44,7 @@ void I0::d3(Symbol* a)
     automaton.stateStack.push_back(automaton.states[3]);
 
     // -> Add symbol to the stack
-    automaton.symbolStack.push_back(a);
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }
 
 void I0::transition(State* s)

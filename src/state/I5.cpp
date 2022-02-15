@@ -25,12 +25,22 @@ bool I5::Action(Symbol* a)
 
 void I5::d2(Symbol* a)
 {
-    // TODO
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[2]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(a);
 }
 
 void I5::d3(Symbol* a)
 {
-    // TODO
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[5]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(a);
 }
 
 void I5::transition(State* s)

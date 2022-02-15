@@ -25,14 +25,9 @@ bool I3::Action(Symbol* a)
 // NOTE: rX = reduce with production X
 void I3::r5(Symbol* a)
 {
-    // [E -> val. ,+,*,$,)]
-    if (a->ident == INT)
-    {
-        // depile 1 state and convert INT to EXPR
-        automaton.stateStack.pop_back();
-        a->ident = EXPR;
-    } else {
-        throw NoRuleException("State I3 only matches [E -> val. ,+,*,$,)] rule.");
-    }
-
+    // Here, a can be either PLUS, MULT, CLOSEPAR or END 
+    // [E -> val. ,+,*,$,)] --- r5) E -> val
+    automaton.stateStack.pop_back(); // depile 1 state
+    automaton.cursorIndex--; // look back 
+    automaton.symbolStack.back()->ident = EXPR; // convert to EXPR the last symbol of the stack
 } 
