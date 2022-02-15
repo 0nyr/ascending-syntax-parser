@@ -13,6 +13,7 @@ class Symbol {
       virtual ~Symbol() { }
       virtual void Display();
       virtual int getValue();
+      virtual string ToString();
       Identifier ident;
 };
 
@@ -22,6 +23,7 @@ class Int : public Symbol {
       ~Int() { }
       virtual void Display();
       int getValue();
+      string ToString();
       operator int() const { return value; } // cast entier
 
    protected:

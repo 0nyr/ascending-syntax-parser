@@ -1,7 +1,7 @@
 # Ascending Syntaxt Parser LR(1)
 
+> circular imports, templating, template specialisation, state DP, singleton DP
 
+### Useful links
 
-## Commands
-
-On linux, make sure to have installed `clang` compiler, as we use it in VSCode. Install it with `sudo apt install clang --install-suggests`.
+[solve circular imports](https://pvigier.github.io/2018/02/09/dependency-graph.html)

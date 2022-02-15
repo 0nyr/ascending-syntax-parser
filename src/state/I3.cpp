@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "exception/NoActionException.hpp"
-#include "exception/NoRuleException.hpp"
 #include "state/State.hpp"
 
 bool I3::Action(Symbol* a)
@@ -31,4 +30,4 @@ void I3::r5(Symbol* a)
     automaton.stateStack.pop_back(); // depile 1 state
     automaton.cursorIndex--; // look back 
     automaton.symbolStack.back()->ident = EXPR; // convert to EXPR the last symbol of the stack
-} 
+}

@@ -13,7 +13,8 @@ BIN=bin/main
 INCLUDE=inc/
 
 CC=g++
-CFLAGS=-I $(INCLUDE) -march=native -O3 -D MAP -D NDEBUG
+PERSONAL_COMPIL_FLAGS=-D DEBUG   # use own flags, see util.hpp
+CFLAGS=-I $(INCLUDE) -march=native -O3 $(PERSONAL_COMPIL_FLAGS)
 LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11
 

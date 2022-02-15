@@ -5,6 +5,7 @@
 #include "lexer/Lexer.hpp"
 #include "Automaton.hpp"
 #include "state/State.hpp" // resolve circular dependency
+#include "util/util.hpp"
 
 Automaton::Automaton(string& inputExpression)
 {
@@ -17,14 +18,13 @@ Automaton::Automaton(string& inputExpression)
     // create list of symbols with lexer
     Lexer l(inputExpression);
     Symbol * s;
-    while((s = l.Consult())->ident != END) {
-        s->Display();
-        std::cout<<std::endl;
+    do {
+        s = l.Consult();
         symbols.push_back(s);
         l.Advance();
-    }
+    } while (s->ident != END);
 
-
+    printVector("symbols", symbols);
 
     // LR(1) Ascending Syntax Analysis
     // states and state stack
@@ -39,6 +39,8 @@ Automaton::Automaton(string& inputExpression)
     states.push_back(new I7(*this));
     states.push_back(new I8(*this));
     states.push_back(new I9(*this));
+    
+    printVector("states", states);
 }
 
 Automaton::~Automaton(){
@@ -60,7 +62,7 @@ bool Automaton::Parsing()
         // action
         try 
         {
-            std::cout << stateStack.back()->toString() << 
+            std::cout << stateStack.back()->ToString() << 
                 "/ cursordIndex : " << cursorIndex << 
                 " / symbolStack " << symbolStack[cursorIndex]->ident <<
                 " / size symbol stack : " << symbolStack.size() << 
