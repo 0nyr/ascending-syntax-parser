@@ -5,13 +5,13 @@
 
 bool I2::Action(Symbol* a)
 {
-    if (a->ident == INT)
+    if (a->ident == OPENPAR)
     {
-        d2();
+        d2(a);
     }
-    else if(a->ident == OPENPAR)
+    else if(a->ident == INT)
     {
-        d3();
+        d3(a);
     }
     else if(a->ident == EXPR)
     {
@@ -24,17 +24,32 @@ bool I2::Action(Symbol* a)
     return false; // not accepting
 }
 
-void I2::d2()
+void I2::d2(Symbol* a)
 {
-    // TODO: implement
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[2]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }
 
-void I2::d3()
+void I2::d3(Symbol* a)
 {
-    // TODO: implement
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[3]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }
 
-void I2::transition(State* state)
+void I2::transition(State* s)
 {
-    // TODO: implement
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[6]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }

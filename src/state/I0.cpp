@@ -7,7 +7,7 @@ bool I0::Action(Symbol* a)
 {
     if(a->ident == OPENPAR)
     {
-        d2();
+        d2(a);
     }
     else if (a->ident == INT)
     {
@@ -22,9 +22,17 @@ bool I0::Action(Symbol* a)
     return false; // not accepting
 }
 
-void I0::d2()
+// We are now at state 0
+// d2 means "transition from state 0 to state 2"
+// NOTE: Read table for more information on the transition 
+void I0::d2(Symbol* a)
 {
-    // TODO: implement
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[2]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }
 
 // We are now at state 0

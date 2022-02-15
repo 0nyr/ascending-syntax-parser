@@ -31,6 +31,4 @@ void I3::r5(Symbol* a)
     automaton.stateStack.pop_back(); // depile 1 state
     automaton.cursorIndex--; // look back 
     automaton.symbolStack.back()->ident = EXPR; // convert to EXPR the last symbol of the stack
-}
-
-
+} 

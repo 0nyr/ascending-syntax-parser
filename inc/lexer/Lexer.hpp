@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+
 #include "lexer/Symbol.hpp"
 
 class Lexer {

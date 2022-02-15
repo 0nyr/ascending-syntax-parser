@@ -12,7 +12,7 @@ bool I8::Action(Symbol* a)
         a->ident == END
         )
     {
-        r3();
+        r3(a);
     }
     else 
     {
@@ -21,8 +21,7 @@ bool I8::Action(Symbol* a)
     return false; // not accepting
 }
 
-void I8::r3()
+void I8::r3(Symbol* a)
 {
-    // TODO: implement
-}
-
+    // TODO
+} 

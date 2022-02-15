@@ -8,11 +8,11 @@ bool I1::Action(Symbol* a)
     
     if (a->ident == INT)
     {
-        d4();
+        d4(a);
     }
     else if(a->ident == OPENPAR)
     {
-        d5();
+        d5(a);
     }
     else if(a->ident == END)
     {
@@ -25,14 +25,24 @@ bool I1::Action(Symbol* a)
     return false; // not accepting
 }
 
-void I1::d4()
+void I1::d4(Symbol* a)
 {
-    // TODO: implement
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[4]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(a);
 }
 
-void I1::d5()
+void I1::d5(Symbol* a)
 {
-    // TODO: implement
+    // Do the transition of state
+    // -> Add state to the stack
+    automaton.stateStack.push_back(automaton.states[5]);
+
+    // -> Add symbol to the stack
+    automaton.symbolStack.push_back(a);
 }
 
 bool I1::accept()
@@ -40,6 +50,3 @@ bool I1::accept()
     std::cout << "<<< END reached, expression accepted >>>" << std::endl;
     return true;
 }
-
-
-

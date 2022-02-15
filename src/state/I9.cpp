@@ -12,7 +12,7 @@ bool I9::Action(Symbol* a)
         a->ident == END
         )
     {
-        r4();
+        r4(a);
     }
     else 
     {
@@ -21,7 +21,7 @@ bool I9::Action(Symbol* a)
     return false; // not accepting
 }
 
-void I9::r4()
+void I9::r4(Symbol* a)
 {
-    // TODO: implement
-}
+    // TODO
+} 

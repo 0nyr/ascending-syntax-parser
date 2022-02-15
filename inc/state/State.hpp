@@ -1,8 +1,7 @@
 #pragma once
-#include <vector>
 
-#include "Automaton.hpp" // circular dependency
 #include "lexer/Symbol.hpp"
+#include "Automaton.hpp" // circular dependency
 
 //class Automaton; // solves circular dependency
 
@@ -20,10 +19,12 @@
 class State
 {
     public:
-        State(Automaton& automaton) : automaton(automaton) {};
-        virtual ~State() {}
-        virtual bool Action(Symbol* a) = 0; // make it pure virtual
-    
+        State(
+            Automaton& automaton
+        ) : automaton(automaton) {};
+        virtual ~State(){}; 
+        virtual bool Action(Symbol* a){ return false; };
+        virtual std::string toString() { return "state";};
     protected:
         Automaton& automaton;
 };
@@ -34,12 +35,14 @@ class I0 : public State
         I0(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I0();
+        ~I0(){};
         bool Action(Symbol* a);
 
-        void d2();
+        void d2(Symbol* a);
         void d3(Symbol* a);
         void transition(State* nextState);
+
+        std::string toString() { return "I0";};
 };
 
 class I1 : public State
@@ -48,13 +51,14 @@ class I1 : public State
         I1(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I1();
+        ~I1(){};
         bool Action(Symbol* a);
-    
-    private:
-        void d4();
-        void d5();
+        
+        void d4(Symbol* a);
+        void d5(Symbol* a);
         bool accept();
+
+        std::string toString() { return "I1";};
 };
 
 class I2 : public State
@@ -63,12 +67,14 @@ class I2 : public State
         I2(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I2();
+        ~I2(){};
         bool Action(Symbol* a);
         
-        void d2();
-        void d3();
+        void d2(Symbol* a);
+        void d3(Symbol* a);
         void transition(State* nextState);
+
+        std::string toString() { return "I2";};
 };
 
 class I3 : public State
@@ -77,10 +83,12 @@ class I3 : public State
         I3(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I3();
+        ~I3(){};
         bool Action(Symbol* a);
         
         void r5(Symbol* a);
+
+        std::string toString() { return "I3";};
 };
 
 class I4 : public State
@@ -89,12 +97,14 @@ class I4 : public State
         I4(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I4();
+        ~I4(){};
         bool Action(Symbol* a);
         
-        void d2();
-        void d3();
+        void d2(Symbol* a);
+        void d3(Symbol* a);
         void transition(State* nextState);
+
+        std::string toString() { return "I4";};
 };
 
 class I5 : public State
@@ -103,12 +113,14 @@ class I5 : public State
         I5(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I5();
+        ~I5(){};
         bool Action(Symbol* a);
         
-        void d2();
-        void d3();
+        void d2(Symbol* a);
+        void d3(Symbol* a);
         void transition(State* nextState);
+
+        std::string toString() { return "I5";};
 };
 
 class I6 : public State
@@ -117,12 +129,14 @@ class I6 : public State
         I6(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I6();
+        ~I6(){};
         bool Action(Symbol* a);
         
-        void d4();
-        void d5();
-        void d9();
+        void d4(Symbol* a);
+        void d5(Symbol* a);
+        void d9(Symbol* a);
+
+        std::string toString() { return "I6";};
 };
 
 class I7 : public State
@@ -131,11 +145,13 @@ class I7 : public State
         I7(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I7();
+        ~I7(){};
         bool Action(Symbol* a);
         
-        void r2();
-        void d5();
+        void r2(Symbol* a);
+        void d5(Symbol* a);
+
+        std::string toString() { return "I7";};
 };
 
 class I8 : public State
@@ -144,10 +160,12 @@ class I8 : public State
         I8(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I8();
+        ~I8(){};
         bool Action(Symbol* a);
         
-        void r3();
+        void r3(Symbol* a);
+
+        std::string toString() { return "I8";};
 };
 
 class I9 : public State
@@ -156,8 +174,10 @@ class I9 : public State
         I9(
             Automaton& automaton
         ) : State(automaton) {};
-        ~I9();
+        ~I9(){};
         bool Action(Symbol* a);
         
-        void r4();
+        void r4(Symbol* a);
+
+        std::string toString() { return "I9";};
 };

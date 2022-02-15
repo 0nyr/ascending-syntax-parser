@@ -1,9 +1,11 @@
 #pragma once
 #include <vector>
 
-#include "state/State.hpp" // circular dependency
+//#include "state/State.hpp" --> Use forward declaration
 #include "lexer/Symbol.hpp"
 
+// forward declaration, 
+// then #include "state/State.hpp" in file
 class State; // solves circular dependency
 
 class Automaton
@@ -15,17 +17,9 @@ class Automaton
         std::vector<State*> states;
         std::vector<State*> stateStack;
 
-        std::size_t cursorIndex; // used for tracking look ahead symbol (in yellow in the example picture)
+        std::size_t cursorIndex=0; // used for tracking look ahead symbol (in yellow in the example picture)
 
-        Automaton();
-        virtual ~Automaton();
+        Automaton(string& inputExpression);
+        ~Automaton();
         bool Parsing();
-        void init(
-            string& inputExpression, 
-            Automaton& automaton
-        );
-
-    private:
-        void initSymbols(string& inputExpression);
-        void initStates(Automaton& automaton);
 };
