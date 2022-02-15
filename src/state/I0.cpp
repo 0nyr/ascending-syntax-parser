@@ -1,21 +1,21 @@
 #include <iostream>
 
-#include "../inc/state/State.hpp"
-#include "../inc/exception/NoActionException.hpp"
+#include "state/State.hpp"
+#include "exception/NoActionException.hpp"
 
 bool I0::Action(Symbol* a)
 {
     if(a->ident == OPENPAR)
     {
-        this->d2();
+        d2();
     }
     else if (a->ident == INT)
     {
-        this->d3(a);
+        d3(a);
     } 
     else if(a->ident == EXPR)
     {
-        this->transition(this->automaton.states[1]);
+        transition(automaton.states[1]);
     } else {
         throw NoActionException();
     }

@@ -1,22 +1,22 @@
 #include <iostream>
 
-#include "../inc/exception/NoActionException.hpp"
-#include "../inc/state/State.hpp"
+#include "exception/NoActionException.hpp"
+#include "state/State.hpp"
 
 bool I1::Action(Symbol* a)
 {
     
     if (a->ident == INT)
     {
-        this->d4();
+        d4();
     }
     else if(a->ident == OPENPAR)
     {
-        this->d5();
+        d5();
     }
     else if(a->ident == END)
     {
-        return this->accept(); // accepting
+        return accept(); // accepting
     } 
     else 
     {

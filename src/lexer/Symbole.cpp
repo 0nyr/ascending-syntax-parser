@@ -1,4 +1,4 @@
-#include "../inc/lexer/Symbol.hpp"
+#include "lexer/Symbol.hpp"
 #include <iostream>
 
 void Symbol::Display() {

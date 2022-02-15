@@ -2,9 +2,9 @@
 #include <iostream>
 
 
-#include "../inc/state/State.hpp"
-#include "../inc/lexer/Symbol.hpp"
-#include "../inc/Automaton.hpp"
+#include "state/State.hpp"
+#include "lexer/Symbol.hpp"
+#include "Automaton.hpp"
 
 int main()
 {
@@ -13,10 +13,11 @@ int main()
     string inputExpression("(1+34)*123");
 
     // check if the expression is valid
-    Automaton automaton = Automaton(
-        inputExpression
+    Automaton* automaton = new Automaton();
+    automaton->init(
+        inputExpression, *automaton
     );
-    bool isExpressionValid = automaton.Parsing();
+    bool isExpressionValid = automaton->Parsing();
     if (isExpressionValid)
     {
         std::cout<<"Expression is valid"<<std::endl;
@@ -26,7 +27,8 @@ int main()
         std::cout<<"Expression is invalid"<<std::endl;
     }
 
-
+    // free memory
+    delete automaton;
     return 0;
 }
 

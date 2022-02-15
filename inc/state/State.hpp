@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
 
-#include "../inc/Automaton.hpp" // circular dependency
-#include "../inc/lexer/Symbol.hpp"
+#include "Automaton.hpp" // circular dependency
+#include "lexer/Symbol.hpp"
+
+//class Automaton; // solves circular dependency
 
 // NOTE: dX = shift with transition to state X
 // There are 10 states in the automaton
@@ -19,7 +21,7 @@ class State
 {
     public:
         State(Automaton& automaton) : automaton(automaton) {};
-        virtual ~State(); 
+        virtual ~State() {}
         virtual bool Action(Symbol* a) = 0; // make it pure virtual
     
     protected:
@@ -32,7 +34,7 @@ class I0 : public State
         I0(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I0();
+        ~I0();
         bool Action(Symbol* a);
 
         void d2();
@@ -46,7 +48,7 @@ class I1 : public State
         I1(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I1();
+        ~I1();
         bool Action(Symbol* a);
     
     private:
@@ -61,7 +63,7 @@ class I2 : public State
         I2(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I2();
+        ~I2();
         bool Action(Symbol* a);
         
         void d2();
@@ -75,7 +77,7 @@ class I3 : public State
         I3(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I3();
+        ~I3();
         bool Action(Symbol* a);
         
         void r5(Symbol* a);
@@ -87,7 +89,7 @@ class I4 : public State
         I4(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I4();
+        ~I4();
         bool Action(Symbol* a);
         
         void d2();
@@ -101,7 +103,7 @@ class I5 : public State
         I5(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I5();
+        ~I5();
         bool Action(Symbol* a);
         
         void d2();
@@ -115,7 +117,7 @@ class I6 : public State
         I6(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I6();
+        ~I6();
         bool Action(Symbol* a);
         
         void d4();
@@ -129,7 +131,7 @@ class I7 : public State
         I7(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I7();
+        ~I7();
         bool Action(Symbol* a);
         
         void r2();
@@ -142,7 +144,7 @@ class I8 : public State
         I8(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I8();
+        ~I8();
         bool Action(Symbol* a);
         
         void r3();
@@ -154,7 +156,7 @@ class I9 : public State
         I9(
             Automaton& automaton
         ) : State(automaton) {};
-        virtual ~I9();
+        ~I9();
         bool Action(Symbol* a);
         
         void r4();

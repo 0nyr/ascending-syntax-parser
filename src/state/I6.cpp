@@ -1,21 +1,21 @@
 #include <iostream>
 
-#include "../inc/exception/NoActionException.hpp"
-#include "../inc/state/State.hpp"
+#include "exception/NoActionException.hpp"
+#include "state/State.hpp"
 
 bool I6::Action(Symbol* a)
 {
     if (a->ident == PLUS)
     {
-        this->d4();
+        d4();
     }
     else if(a->ident == MULT)
     {
-        this->d5();
+        d5();
     }
     else if(a->ident == CLOSEPAR)
     {
-        this->d9();
+        d9();
     }
     else 
     {

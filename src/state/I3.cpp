@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../inc/exception/NoActionException.hpp"
-#include "../inc/exception/NoRuleException.hpp"
-#include "../inc/state/State.hpp"
+#include "exception/NoActionException.hpp"
+#include "exception/NoRuleException.hpp"
+#include "state/State.hpp"
 
 bool I3::Action(Symbol* a)
 {
@@ -13,7 +13,7 @@ bool I3::Action(Symbol* a)
         a->ident == END
         )
     {
-        this->r5(a);
+        r5(a);
     }
     else 
     {

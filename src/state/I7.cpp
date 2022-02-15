@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "../inc/exception/NoActionException.hpp"
-#include "../inc/state/State.hpp"
+#include "exception/NoActionException.hpp"
+#include "state/State.hpp"
 
 bool I7::Action(Symbol* a)
 {
@@ -11,11 +11,11 @@ bool I7::Action(Symbol* a)
         a->ident == END
         )
     {
-        this->r2();
+        r2();
     }
     else if(a->ident == MULT)
     {
-        this->d5();
+        d5();
     }
     else 
     {
