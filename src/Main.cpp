@@ -6,7 +6,7 @@
 #include "../inc/lexer/Symbol.hpp"
 #include "../inc/Automaton.hpp"
 
-void main()
+int main()
 {
 
     // declare expression to be recognized
@@ -26,6 +26,8 @@ void main()
         std::cout<<"Expression is invalid"<<std::endl;
     }
 
+
+    return 0;
 }
 
 

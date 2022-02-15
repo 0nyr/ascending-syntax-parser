@@ -19,6 +19,7 @@ bool I3::Action(Symbol* a)
     {
         throw NoActionException();
     }
+    return false; // not accepting
 }
 
 // We are at state I3

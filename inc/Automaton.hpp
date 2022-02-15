@@ -4,7 +4,7 @@
 #include "../inc/state/State.hpp" // circular dependency
 #include "../inc/lexer/Symbol.hpp"
 
-class State {};
+class State; // solves circular dependency
 
 class Automaton
 {

@@ -21,4 +21,15 @@ bool I7::Action(Symbol* a)
     {
         throw NoActionException();
     }
+    return false; // not accepting
+}
+
+void I7::d5()
+{
+    //  TODO: implement
+}
+
+void I7::r2()
+{
+    // TODO: implement
 }

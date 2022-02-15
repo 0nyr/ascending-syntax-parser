@@ -33,6 +33,7 @@ $(BIN): $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 obj/%.o: src/%.cpp
+	mkdir -p $(dir $@)
 	$(CC) -o $@ -c $^ $(CFLAGS)
 
 clean:

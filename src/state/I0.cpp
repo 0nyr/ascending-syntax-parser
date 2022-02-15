@@ -19,6 +19,12 @@ bool I0::Action(Symbol* a)
     } else {
         throw NoActionException();
     }
+    return false; // not accepting
+}
+
+void I0::d2()
+{
+    // TODO: implement
 }
 
 // We are now at state 0
@@ -32,4 +38,9 @@ void I0::d3(Symbol* a)
 
     // -> Add symbol to the stack
     automaton.symbolStack.push_back(a);
+}
+
+void I0::transition(State* state)
+{
+    // TODO: implement
 }

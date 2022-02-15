@@ -18,9 +18,7 @@
 class State
 {
     public:
-        State(
-            Automaton& automaton
-        ) : automaton(automaton) {};
+        State(Automaton& automaton) : automaton(automaton) {};
         virtual ~State(); 
         virtual bool Action(Symbol* a) = 0; // make it pure virtual
     
@@ -50,9 +48,11 @@ class I1 : public State
         ) : State(automaton) {};
         virtual ~I1();
         bool Action(Symbol* a);
-        
+    
+    private:
         void d4();
         void d5();
+        bool accept();
 };
 
 class I2 : public State

@@ -21,4 +21,20 @@ bool I6::Action(Symbol* a)
     {
         throw NoActionException();
     }
+    return false; // not accepting
+}
+
+void I6::d4()
+{
+    // TODO: implement
+}
+
+void I6::d5()
+{
+    // TODO: implement
+}
+
+void I6::d9()
+{
+    // TODO: implement
 }

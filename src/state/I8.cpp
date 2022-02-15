@@ -18,4 +18,11 @@ bool I8::Action(Symbol* a)
     {
         throw NoActionException();
     }
+    return false; // not accepting
 }
+
+void I8::r3()
+{
+    // TODO: implement
+}
+

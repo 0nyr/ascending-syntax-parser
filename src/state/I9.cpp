@@ -18,4 +18,10 @@ bool I9::Action(Symbol* a)
     {
         throw NoActionException();
     }
+    return false; // not accepting
+}
+
+void I9::r4()
+{
+    // TODO: implement
 }
