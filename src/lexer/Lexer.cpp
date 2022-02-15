@@ -1,4 +1,4 @@
-#include "inc/lexer/Lexer.hpp"
+#include "../inc/lexer/Lexer.hpp"
 
 Symbol * Lexer::Consult() {
    if (!buffer) {

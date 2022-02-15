@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 
-#include "inc/Automaton.hpp"
-#include "inc/lexer/Symbol.hpp"
+#include "../inc/Automaton.hpp" // circular dependency
+#include "../inc/lexer/Symbol.hpp"
 
 // NOTE: dX = shift with transition to state X
 // There are 10 states in the automaton
@@ -22,7 +22,7 @@ class State
             Automaton& automaton
         ) : automaton(automaton) {};
         virtual ~State(); 
-        virtual bool Action(Symbol* a);
+        virtual bool Action(Symbol* a) = 0; // make it pure virtual
     
     protected:
         Automaton& automaton;

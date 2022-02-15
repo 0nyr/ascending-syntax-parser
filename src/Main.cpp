@@ -2,9 +2,9 @@
 #include <iostream>
 
 
-#include "inc/state/State.hpp"
-#include "inc/lexer/Symbol.hpp"
-#include "inc/Automaton.hpp"
+#include "../inc/state/State.hpp"
+#include "../inc/lexer/Symbol.hpp"
+#include "../inc/Automaton.hpp"
 
 void main()
 {

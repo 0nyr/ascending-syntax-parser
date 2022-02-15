@@ -1,11 +1,10 @@
 #include <iostream>
 
-#include "inc/state/State.hpp"
-#include "inc/exception/NoActionException.hpp"
+#include "../inc/state/State.hpp"
+#include "../inc/exception/NoActionException.hpp"
 
 bool I0::Action(Symbol* a)
 {
-    Symbol* a = automaton.symbolStack.back();
     if(a->ident == OPENPAR)
     {
         this->d2();

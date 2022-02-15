@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-#include "inc/exception/NoActionException.hpp"
-#include "inc/exception/NoRuleException.hpp"
-#include "inc/lexer/Lexer.hpp"
-#include "inc/Automaton.hpp"
+#include "../inc/exception/NoActionException.hpp"
+#include "../inc/exception/NoRuleException.hpp"
+#include "../inc/lexer/Lexer.hpp"
+#include "../inc/Automaton.hpp"
 
 Automaton::Automaton(string& inputExpression)
 {
