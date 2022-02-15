@@ -2,7 +2,6 @@
 #include <string>
 
 #include "exception/NoActionException.hpp"
-#include "exception/NoRuleException.hpp"
 #include "lexer/Lexer.hpp"
 #include "Automaton.hpp"
 #include "state/State.hpp" // resolve circular dependency
@@ -73,11 +72,6 @@ bool Automaton::Parsing()
         catch (NoActionException& e)
         {
             std::cout<<"No action for this symbol"<<std::endl;
-            return false;
-        }
-        catch (NoRuleException& e)
-        {
-            std::cout<<"No rule for this state"<<std::endl;
             return false;
         }
 
