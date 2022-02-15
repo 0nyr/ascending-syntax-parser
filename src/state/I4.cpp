@@ -45,4 +45,5 @@ void I4::d3(Symbol* a)
 
 void I4::transition(State* s)
 {
+    // TODO
 }

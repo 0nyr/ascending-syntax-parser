@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "../inc/exception/NoActionException.hpp"
 #include "../inc/exception/NoRuleException.hpp"
@@ -8,18 +9,18 @@
 
 Automaton::Automaton(string& inputExpression)
 {
+    // init attributes 
+    cursorIndex = 0;
+
     // Lexical Analysis
     // chain of symbols and stack
 
-    // declare chain to be recognized
-    string chaine("(1+34)*123");
-
     // create list of symbols with lexer
-    Lexer l(chaine);
+    Lexer l(inputExpression);
     Symbol * s;
     while((s = l.Consult())->ident != END) {
         s->Display();
-        cout<<endl;
+        std::cout<<std::endl;
         symbols.push_back(s);
         l.Advance();
     }
