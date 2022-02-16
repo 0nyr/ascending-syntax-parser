@@ -82,10 +82,7 @@ bool Automaton::Parsing()
 bool Automaton::isActionAccepted()
 {
     Symbol* a = symbols[cursorIndex];
-    bool isActionAccepted = stateStack.back()->Action(
-        a
-    );
-    return isActionAccepted;
+    return stateStack.back()->Action(a);
 }
 
 void Automaton::printCurrentSituation()

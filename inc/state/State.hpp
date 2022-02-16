@@ -27,6 +27,7 @@ class State
         virtual std::string ToString() { return "state";};
     protected:
         Automaton& automaton;
+        void d(Symbol* a, int stateNumberX);
 };
 
 class I0 : public State
@@ -38,8 +39,6 @@ class I0 : public State
         ~I0(){};
         bool Action(Symbol* a);
 
-        void d2(Symbol* a);
-        void d3(Symbol* a);
         void transition(State* nextState);
 
         std::string ToString() { return "I0";};
@@ -54,8 +53,6 @@ class I1 : public State
         ~I1(){};
         bool Action(Symbol* a);
         
-        void d4(Symbol* a);
-        void d5(Symbol* a);
         bool accept();
 
         std::string ToString() { return "I1";};
@@ -70,8 +67,6 @@ class I2 : public State
         ~I2(){};
         bool Action(Symbol* a);
         
-        void d2(Symbol* a);
-        void d3(Symbol* a);
         void transition(State* nextState);
 
         std::string ToString() { return "I2";};
@@ -100,8 +95,6 @@ class I4 : public State
         ~I4(){};
         bool Action(Symbol* a);
         
-        void d2(Symbol* a);
-        void d3(Symbol* a);
         void transition(State* nextState);
 
         std::string ToString() { return "I4";};
@@ -116,8 +109,6 @@ class I5 : public State
         ~I5(){};
         bool Action(Symbol* a);
         
-        void d2(Symbol* a);
-        void d3(Symbol* a);
         void transition(State* nextState);
 
         std::string ToString() { return "I5";};
@@ -131,10 +122,6 @@ class I6 : public State
         ) : State(automaton) {};
         ~I6(){};
         bool Action(Symbol* a);
-        
-        void d4(Symbol* a);
-        void d5(Symbol* a);
-        void d9(Symbol* a);
 
         std::string ToString() { return "I6";};
 };
@@ -147,9 +134,8 @@ class I7 : public State
         ) : State(automaton) {};
         ~I7(){};
         bool Action(Symbol* a);
-        
+
         void r2(Symbol* a);
-        void d5(Symbol* a);
 
         std::string ToString() { return "I7";};
 };

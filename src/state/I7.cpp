@@ -15,7 +15,7 @@ bool I7::Action(Symbol* a)
     }
     else if(a->ident == MULT)
     {
-        d5(a);
+        d(a, 5);
     }
     else 
     {
@@ -49,14 +49,4 @@ void I7::r2(Symbol* a)
 
     delete(automaton.symbolStack.back());
     automaton.symbolStack.push_back(new Int(value)); // convert to EXPR the last symbol of the stack
-} 
-
-void I7::d5(Symbol* a)
-{
-    // Do the transition of state
-    // -> Add state to the stack
-    automaton.stateStack.push_back(automaton.states[5]);
-
-    // -> Add symbol to the stack
-    automaton.symbolStack.push_back(a);
 }
