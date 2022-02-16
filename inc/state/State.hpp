@@ -13,7 +13,7 @@
 // r1) E' -> E
 // r2) E -> E + E
 // r3) E -> E * E
-// r4) E -> E ( E )
+// r4) E -> ( E )
 // r5) E -> val
 
 class State
@@ -78,7 +78,7 @@ class I3 : public State
         ~I3(){};
         bool Action(Symbol* a);
         
-        void r5(Symbol* a);
+        void r5();
 
         std::string ToString() { return "I3";};
 };
@@ -128,7 +128,7 @@ class I7 : public State
         ~I7(){};
         bool Action(Symbol* a);
 
-        void r2(Symbol* a);
+        void r2();
 
         std::string ToString() { return "I7";};
 };
@@ -142,7 +142,7 @@ class I8 : public State
         ~I8(){};
         bool Action(Symbol* a);
         
-        void r3(Symbol* a);
+        void r3();
 
         std::string ToString() { return "I8";};
 };
@@ -156,7 +156,7 @@ class I9 : public State
         ~I9(){};
         bool Action(Symbol* a);
         
-        void r4(Symbol* a);
+        void r4();
 
         std::string ToString() { return "I9";};
 };

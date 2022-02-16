@@ -21,9 +21,11 @@ class Automaton
         ~Automaton();
         bool Parsing();
 
-        inline void decrementCursorIndex()
+        inline void lookBackCursorIndex()
         {
-            this->cursorIndex--;
+            // - 2 because after, in Parsing(), cursorIndex is incremented by 1
+            // and we want it to be -1 at the end of the current parsing loop
+            this->cursorIndex = this->cursorIndex - 2;
         }
     
     private:

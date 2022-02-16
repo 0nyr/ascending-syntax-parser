@@ -68,8 +68,8 @@ bool Automaton::Parsing()
             std::cout<<"No action for this symbol"<<std::endl;
             return false;
         }
+        cursorIndex++; // must be placed before printing
         printCurrentSituation();
-        cursorIndex++; // must be last action 
     } while (!isActionAccepted);
 
     // Action Accepted
