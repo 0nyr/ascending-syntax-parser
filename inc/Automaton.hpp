@@ -24,5 +24,6 @@ class Automaton
         bool Parsing();
     
     private:
+        bool isActionAccepted();
         void printCurrentSituation();
 };

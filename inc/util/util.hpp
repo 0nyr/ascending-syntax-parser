@@ -39,7 +39,7 @@ std::string vectorToString(std::vector<T> const & vector) {
     return result;
 }
 
-template<>
+template<> inline
 std::string vectorToString<Symbol*>(std::vector<Symbol*> const & vector) {
     std::string result = "[";
     for (int i = 0; i < vector.size(); i++) {
@@ -52,7 +52,7 @@ std::string vectorToString<Symbol*>(std::vector<Symbol*> const & vector) {
     return result;
 }
 
-template<>
+template<> inline
 std::string vectorToString<State*>(std::vector<State*> const & vector) {
     std::string result = "[";
     for (int i = 0; i < vector.size(); i++) {
@@ -67,7 +67,7 @@ std::string vectorToString<State*>(std::vector<State*> const & vector) {
 
 
 // function that prints a std::vector
-template <typename T>
+template <typename T> 
 void printVector(std::string const & vectorName, std::vector<T> const & vector) {
     // get type of T: https://stackoverflow.com/questions/1055452/c-get-name-of-type-in-template
     std::cout << vectorName << 
@@ -85,7 +85,7 @@ void printVector(std::string const & vectorName, std::vector<T> const & vector) 
 }
 
 // template specialization for printing std::vector<Symbol*>
-template <>
+template <> inline
 void printVector<Symbol*>(
     std::string const & vectorName, 
     std::vector<Symbol*> const & vector
@@ -101,7 +101,7 @@ void printVector<Symbol*>(
 }
 
 // template specialization for printing std::vector>State*>
-template <>
+template <> inline
 void printVector<State*>(
     std::string const & vectorName, 
     std::vector<State*> const & vector

@@ -13,8 +13,9 @@ BIN=bin/main
 INCLUDE=inc/
 
 CC=g++
-PERSONAL_COMPIL_FLAGS=-D DEBUG   # use own flags, see util.hpp
-CFLAGS=-I $(INCLUDE) -march=native -O3 $(PERSONAL_COMPIL_FLAGS)
+GDB_DEBUGGER_FLAGS=-g
+PERSONAL_COMPIL_FLAGS=-D DEBUG # use own flags, see util.hpp
+CFLAGS=-I $(INCLUDE) -march=native -O3 $(PERSONAL_COMPIL_FLAGS) $(GDB_DEBUGGER_FLAGS)
 LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11
 

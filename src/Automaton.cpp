@@ -53,16 +53,15 @@ bool Automaton::Parsing()
     // LR(1) parsing 
     // WARN: Don't get mixed up between stacks and arrays.
     stateStack.push_back(states[0]);
-    symbolStack.push_back(symbols[0]);
+    // symbolStack starts empty
     printCurrentSituation();
+    
     bool isActionAccepted = false;
 
     do {
         try 
         {
-            isActionAccepted = stateStack.back()->Action(
-                symbolStack[cursorIndex]
-            );
+            isActionAccepted = this->isActionAccepted();
         }
         catch (NoActionException& e)
         {
@@ -80,6 +79,15 @@ bool Automaton::Parsing()
     return true;
 }
 
+bool Automaton::isActionAccepted()
+{
+    Symbol* a = symbols[cursorIndex];
+    bool isActionAccepted = stateStack.back()->Action(
+        a
+    );
+    return isActionAccepted;
+}
+
 void Automaton::printCurrentSituation()
 {
     std::string logLine;
@@ -88,7 +96,7 @@ void Automaton::printCurrentSituation()
     for (int i = 0; i < nbMissingSpaces; i++)
         logLine += " ";
     logLine += vectorToString(symbolStack);
-    logLine += "[" + symbolStack[cursorIndex]->ToString() + "]";
+    logLine += "[" + symbols[cursorIndex]->ToString() + "]";
     std::cout << logLine << std::endl;
 }
 
