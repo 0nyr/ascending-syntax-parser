@@ -15,21 +15,11 @@ bool I2::Action(Symbol* a)
     }
     else if(a->ident == EXPR)
     {
-        transition(automaton.states[6]);
+        transition(a, 6);
     }
     else 
     {
         throw NoActionException();
     }
     return false; // not accepting
-}
-
-void I2::transition(State* s)
-{
-    // Do the transition of state
-    // -> Add state to the stack
-    automaton.stateStack.push_back(automaton.states[6]);
-
-    // -> Add symbol to the stack
-    automaton.symbolStack.push_back(automaton.symbols[automaton.cursorIndex+1]);
 }

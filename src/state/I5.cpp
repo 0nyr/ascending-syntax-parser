@@ -15,16 +15,11 @@ bool I5::Action(Symbol* a)
     }
     else if(a->ident == EXPR)
     {
-        transition(automaton.states[8]);
+        transition(a, 8);
     }
     else 
     {
         throw NoActionException();
     }
     return false; // not accepting
-}
-
-void I5::transition(State* state)
-{
-    // TODO
 }

@@ -17,13 +17,18 @@ class Automaton
         std::vector<State*> states;
         std::vector<State*> stateStack;
 
-        std::size_t cursorIndex=0; // used for tracking look ahead symbol (in yellow in the example picture)
-
         Automaton(string& inputExpression);
         ~Automaton();
         bool Parsing();
+
+        inline void decrementCursorIndex()
+        {
+            this->cursorIndex--;
+        }
     
     private:
+        std::size_t cursorIndex; // used for tracking look ahead symbol (in yellow in the example picture)
+
         bool isActionAccepted();
         void printCurrentSituation();
 };

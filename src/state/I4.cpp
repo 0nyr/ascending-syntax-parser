@@ -15,16 +15,11 @@ bool I4::Action(Symbol* a)
     }
     else if(a->ident == EXPR)
     {
-        transition(automaton.states[7]);
+        transition(a, 4);
     }
     else 
     {
         throw NoActionException();
     }
     return false; // not accepting
-}
-
-void I4::transition(State* state)
-{
-    // TODO: implement
 }

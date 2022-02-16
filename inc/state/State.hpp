@@ -28,6 +28,7 @@ class State
     protected:
         Automaton& automaton;
         void d(Symbol* a, int stateNumberX);
+        void transition(Symbol* a, int stateNumberX);
 };
 
 class I0 : public State
@@ -38,8 +39,6 @@ class I0 : public State
         ) : State(automaton) {};
         ~I0(){};
         bool Action(Symbol* a);
-
-        void transition(State* nextState);
 
         std::string ToString() { return "I0";};
 };
@@ -66,8 +65,6 @@ class I2 : public State
         ) : State(automaton) {};
         ~I2(){};
         bool Action(Symbol* a);
-        
-        void transition(State* nextState);
 
         std::string ToString() { return "I2";};
 };
@@ -94,8 +91,6 @@ class I4 : public State
         ) : State(automaton) {};
         ~I4(){};
         bool Action(Symbol* a);
-        
-        void transition(State* nextState);
 
         std::string ToString() { return "I4";};
 };
@@ -108,8 +103,6 @@ class I5 : public State
         ) : State(automaton) {};
         ~I5(){};
         bool Action(Symbol* a);
-        
-        void transition(State* nextState);
 
         std::string ToString() { return "I5";};
 };

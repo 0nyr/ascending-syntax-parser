@@ -52,7 +52,7 @@ bool Automaton::Parsing()
 {
     // LR(1) parsing 
     // WARN: Don't get mixed up between stacks and arrays.
-    stateStack.push_back(states[0]);
+    stateStack.push_back(states[cursorIndex]);
     // symbolStack starts empty
     printCurrentSituation();
     
@@ -63,16 +63,13 @@ bool Automaton::Parsing()
         {
             isActionAccepted = this->isActionAccepted();
         }
-        catch (NoActionException& e)
+        catch (NoActionException& error)
         {
             std::cout<<"No action for this symbol"<<std::endl;
             return false;
         }
-
         printCurrentSituation();
-
-        // cursor increment
-        cursorIndex++;
+        cursorIndex++; // must be last action 
     } while (!isActionAccepted);
 
     // Action Accepted
