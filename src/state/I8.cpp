@@ -60,6 +60,6 @@ void I8::r3()
     }
     else
     {
-        throw WrongSymbolException("Wrong symbols, expected E + E.");
+        throw WrongSymbolException("Wrong symbols, expected E * E.");
     }
 }
