@@ -59,9 +59,6 @@ void I9::r4()
         automaton.stateStack.pop_back(); 
         automaton.stateStack.pop_back(); 
         automaton.lookBackCursorIndex(3); // look back cursor
-
-        printVector("symbolStack", automaton.symbolStack);
-        printVector("symbols", automaton.symbols);
     }
     else
     {

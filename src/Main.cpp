@@ -8,11 +8,23 @@
 #include "util/util.hpp"
 
 
-int main()
+int main(int argc, char** argv)
 {
-    // declare expression to be recognized
+    // declare default expression to be recognized
     std::string inputExpression("(1+34)*123");
 
+    cout << "You have entered " << argc
+        << " arguments:" << "\n";
+  
+    for (int i = 0; i < argc; ++i)
+    {
+        cout << "argv[" << i << "]: " << argv[i] << "\n";
+    }
+
+    if (argc > 1)
+    {
+        inputExpression = argv[1];
+    }
     
     std::vector<int> testvect;
     testvect.push_back(1);
