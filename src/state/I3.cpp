@@ -23,14 +23,14 @@ bool I3::Action(Symbol* a)
 
 // We are at state I3
 // NOTE: rX = reduce with production X
+// r5) E -> val
 void I3::r5()
 {
-    // Here, a can be either PLUS, MULT, CLOSEPAR or END 
-    // [E -> val. ,+,*,$,)] --- r5) E -> val
+    // depile state
     automaton.stateStack.pop_back(); // depile 1 state
-    automaton.lookBackCursorIndex(); // look back cursor
+    automaton.lookBackCursorIndex(1); // look back cursor (1 state = 1 symbol removed)
 
-    // use pointer magic, convert the symbol in symbols
+    // use pointer magic, convert the symbol in symbols vector
     // using its pointer stored in the symbolStack
     automaton.symbolStack.back()->ident = EXPR; // convert to EXPR the last symbol of the stack
     automaton.symbolStack.pop_back(); // depile 1 symbole (after conversion)

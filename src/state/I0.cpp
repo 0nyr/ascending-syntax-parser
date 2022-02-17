@@ -16,7 +16,9 @@ bool I0::Action(Symbol* a)
     else if(a->ident == EXPR)
     {
         transition(a, 1);
-    } else {
+    } 
+    else 
+    {
         throw NoActionException();
     }
     return false; // not accepting

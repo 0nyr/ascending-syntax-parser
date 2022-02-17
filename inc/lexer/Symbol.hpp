@@ -36,7 +36,8 @@ class Expr : public Symbol {
       ~Expr() {}
       virtual void Display();
       int getValue();
-      
+      inline void setValue(int i) { value = i; }
+
    protected:
       int value;
 };
