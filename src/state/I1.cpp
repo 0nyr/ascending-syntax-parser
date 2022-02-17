@@ -7,11 +7,11 @@
 bool I1::Action(Symbol* a)
 {
     
-    if (a->ident == INT)
+    if (a->ident == PLUS)
     {
         d(a, 4);
     }
-    else if(a->ident == OPENPAR)
+    else if(a->ident == MULT)
     {
         d(a, 5);
     }

@@ -69,7 +69,10 @@ bool Automaton::Parsing()
             return false;
         }
         cursorIndex++; // must be placed before printing
-        printCurrentSituation();
+        if(!isActionAccepted)
+        {
+            printCurrentSituation();
+        }
     } while (!isActionAccepted);
 
     // Action Accepted
@@ -90,7 +93,16 @@ void Automaton::printCurrentSituation()
     for (int i = 0; i < nbMissingSpaces; i++)
         logLine += " ";
     logLine += vectorToString(symbolStack);
-    logLine += "[" + symbols[cursorIndex]->ToString() + "]";
+
+    // print lookup, check if cursorIndex is within bounds of symbols vector
+    logLine += "[";
+    if (
+        cursorIndex < symbols.size() &&
+        cursorIndex >= 0
+    ) {
+        logLine += symbols[cursorIndex]->ToString();
+    }
+    logLine += "]";
     std::cout << logLine << std::endl;
 }
 
