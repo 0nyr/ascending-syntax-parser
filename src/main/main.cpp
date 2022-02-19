@@ -25,17 +25,11 @@ int main(int argc, char** argv)
     {
         inputExpression = argv[1];
     }
-    
-    std::vector<int> testvect;
-    testvect.push_back(1);
-    std::cout << vectorToString<int>(testvect) << std::endl;
-    testvect.pop_back();
-    std::cout << vectorToString<int>(testvect) << std::endl;
 
     // check if the expression is valid
     Automaton automaton = Automaton();
-    bool isExpressionValid = automaton.Parsing(inputExpression);
-    if (isExpressionValid)
+    ParsingResult parsingResult = automaton.Parsing(inputExpression);
+    if (parsingResult.isParsingSuccessful)
     {
         std::cout<<"Expression is valid"<<std::endl;
     }

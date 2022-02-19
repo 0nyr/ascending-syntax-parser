@@ -3,7 +3,7 @@
 #include "exception/NoActionException.hpp"
 #include "state/State.hpp"
 
-bool I6::Action(Symbol* a)
+ParsingResult I6::Action(Symbol* a)
 {
     if (a->ident == PLUS)
     {
@@ -21,5 +21,5 @@ bool I6::Action(Symbol* a)
     {
         throw NoActionException();
     }
-    return false; // not accepting
+    return ParsingResult(); // not accepting
 }

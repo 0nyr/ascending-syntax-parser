@@ -26,14 +26,19 @@ LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11
 
 SRCS_MAIN=$(wildcard src/main/**/*.cpp) $(wildcard src/main/*.cpp)
-SRCS_TEST=$(wildcard src/tests/**/*.cpp) $(wildcard src/tests/*.cpp)
+SRCS_TEST=$(wildcard src/test/**/*.cpp) $(wildcard src/test/*.cpp)
 OBJS_MAIN=$(SRCS_MAIN:src/%.cpp=obj/%.o)
 OBJS_TEST=$(SRCS_TEST:src/%.cpp=obj/%.o)
+
+# at linking, give access to main/ to test files excluding the main main.
+OBJ_MAIN_MAIN=obj/main/main.o
+OBJS_MAIN_WITHOUT_MAIN=$(filter-out $(OBJ_MAIN_MAIN),$(OBJS_MAIN))
+
 
 # targets
 # set default target : https://stackoverflow.com/questions/2057689/how-does-make-app-know-default-target-to-build-if-no-target-is-specified
 .DEFAULT_GOAL := default
-.PHONY: default build build_test build_all clean run run_test rebuild rebuild_all rr ww dirs
+.PHONY: default build build_test all clean run run_test rebuild rebuild_all rr ww dirs
 
 default: build
 
@@ -41,21 +46,21 @@ build: $(BIN_MAIN)
 
 build_test: $(BIN_TEST)
 
-build_all: $(BINS)
+all: $(BINS)
 
-$(BIN_MAIN): $(OBJS_MAIN)
+$(BIN_MAIN): $(OBJS_MAIN) # linking main
 	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
-obj/%.o: src/%.cpp
+obj/%.o: src/%.cpp # compiling main
 	mkdir -p $(dir $@)
 	$(CC) -o $@ -c $^ $(CFLAGS)
 
-$(BIN_TEST): $(OBJS_TEST)
+$(BIN_TEST): $(OBJS_TEST) $(OBJS_MAIN_WITHOUT_MAIN) # linking test
 	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
-obj/test/%.o: src/test/%.cpp
+obj/test/%.o: src/test/%.cpp # compiling test
 	mkdir -p $(dir $@)
-	$(CC) -o $@ -c $^ $(CFLAGS) $(INC_TEST)
+	$(CC) -o $@ -c $^ $(CFLAGS) -I $(INC_TEST)
 
 clean:
 	rm -rf bin/* obj/*

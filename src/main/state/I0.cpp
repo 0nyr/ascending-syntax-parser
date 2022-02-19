@@ -3,7 +3,7 @@
 #include "state/State.hpp"
 #include "exception/NoActionException.hpp"
 
-bool I0::Action(Symbol* a)
+ParsingResult I0::Action(Symbol* a)
 {
     if(a->ident == OPENPAR)
     {
@@ -21,5 +21,5 @@ bool I0::Action(Symbol* a)
     {
         throw NoActionException();
     }
-    return false; // not accepting
+    return ParsingResult(); // not accepting
 }

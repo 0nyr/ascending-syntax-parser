@@ -23,7 +23,13 @@ class State
             Automaton& automaton
         ) : automaton(automaton) {};
         virtual ~State(){}; 
-        virtual bool Action(Symbol* a){ return false; };
+        virtual ParsingResult Action(Symbol* a)
+        { 
+            ParsingResult parsingResult;
+            parsingResult.isParsingSuccessful = false;
+            parsingResult.expressionValue = 0;
+            return parsingResult;
+        };
         virtual std::string ToString() { return "state";};
     protected:
         Automaton& automaton;
@@ -38,7 +44,7 @@ class I0 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I0(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
 
         std::string ToString() { return "I0";};
 };
@@ -50,9 +56,9 @@ class I1 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I1(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
         
-        bool accept();
+        ParsingResult accept();
 
         std::string ToString() { return "I1";};
 };
@@ -64,7 +70,7 @@ class I2 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I2(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
 
         std::string ToString() { return "I2";};
 };
@@ -76,7 +82,7 @@ class I3 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I3(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
         
         void r5();
 
@@ -90,7 +96,7 @@ class I4 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I4(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
 
         std::string ToString() { return "I4";};
 };
@@ -102,7 +108,7 @@ class I5 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I5(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
 
         std::string ToString() { return "I5";};
 };
@@ -114,7 +120,7 @@ class I6 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I6(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
 
         std::string ToString() { return "I6";};
 };
@@ -126,7 +132,7 @@ class I7 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I7(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
 
         void r2();
 
@@ -140,7 +146,7 @@ class I8 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I8(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
         
         void r3();
 
@@ -154,7 +160,7 @@ class I9 : public State
             Automaton& automaton
         ) : State(automaton) {};
         ~I9(){};
-        bool Action(Symbol* a);
+        ParsingResult Action(Symbol* a);
         
         void r4();
 

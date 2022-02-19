@@ -4,7 +4,7 @@
 #include "exception/NoActionException.hpp"
 #include "state/State.hpp"
 
-bool I1::Action(Symbol* a)
+ParsingResult I1::Action(Symbol* a)
 {
     
     if (a->ident == PLUS)
@@ -23,11 +23,11 @@ bool I1::Action(Symbol* a)
     {
         throw NoActionException();
     }
-    return false; // not accepting
+    return ParsingResult(); // not accepting
 }
 
 // r1) E' -> E
-bool I1::accept()
+ParsingResult I1::accept()
 {
     std::cout << "<<< END reached, expression accepted >>>" << std::endl;
 
@@ -37,5 +37,9 @@ bool I1::accept()
     {
         std::cout << "<<< Expression value: " << finalExpr->getValue() << " >>>" << std::endl;
     }
-    return true;
+
+    ParsingResult parsingResult;
+    parsingResult.isParsingSuccessful = true;
+    parsingResult.expressionValue = finalExpr->getValue();
+    return parsingResult;
 }

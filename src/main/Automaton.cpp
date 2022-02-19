@@ -42,7 +42,7 @@ void Automaton::clearVectors()
     symbolStack.clear();
 }
 
-void Automaton::init(string& inputExpression)
+void Automaton::init(string const & inputExpression)
 {
     // erase old stuff
     clean();
@@ -53,7 +53,7 @@ void Automaton::init(string& inputExpression)
     lexicalAnalysis(inputExpression);
 }
 
-void Automaton::lexicalAnalysis(std::string& inputExpression)
+void Automaton::lexicalAnalysis(std::string const & inputExpression)
 {
     // create list of symbols with lexer
     Lexer l(inputExpression);
@@ -81,7 +81,7 @@ void Automaton::lexicalAnalysis(std::string& inputExpression)
     printVector("states", states);
 }
 
-bool Automaton::Parsing(std::string& inputExpression)
+ParsingResult Automaton::Parsing(std::string const & inputExpression)
 {
     init(inputExpression);
 
@@ -91,30 +91,30 @@ bool Automaton::Parsing(std::string& inputExpression)
     // symbolStack starts empty
     printCurrentSituation();
     
-    bool isActionAccepted = false;
+    ParsingResult parsingResult;
 
     do {
         try 
         {
-            isActionAccepted = this->isActionAccepted();
+            parsingResult = this->isActionAccepted();
         }
         catch (NoActionException& error)
         {
             std::cout<<"No action for this symbol"<<std::endl;
-            return false;
+            return parsingResult;
         }
         cursorIndex++; // must be placed before printing
-        if(!isActionAccepted)
+        if(!parsingResult.isParsingSuccessful)
         {
             printCurrentSituation();
         }
-    } while (!isActionAccepted);
+    } while (!parsingResult.isParsingSuccessful);
 
     // Action Accepted
-    return true;
+    return parsingResult;
 }
 
-bool Automaton::isActionAccepted()
+ParsingResult Automaton::isActionAccepted()
 {
     Symbol* a = symbols[cursorIndex];
     return stateStack.back()->Action(a);

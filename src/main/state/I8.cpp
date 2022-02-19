@@ -4,7 +4,7 @@
 #include "exception/WrongSymbolException.hpp"
 #include "state/State.hpp"
 
-bool I8::Action(Symbol* a)
+ParsingResult I8::Action(Symbol* a)
 {
     if (
         a->ident == PLUS ||
@@ -19,7 +19,7 @@ bool I8::Action(Symbol* a)
     {
         throw NoActionException();
     }
-    return false; // not accepting
+    return ParsingResult(); // not accepting
 }
 
 // r3) E -> E * E

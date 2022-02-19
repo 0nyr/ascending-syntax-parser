@@ -9,6 +9,12 @@ class State; // solves circular dependency
 
 #include <vector>
 
+struct ParsingResult
+{
+    bool isParsingSuccessful = false;
+    int expressionValue = 0;
+};
+
 class Automaton
 {
     public:
@@ -20,7 +26,7 @@ class Automaton
 
         Automaton();
         ~Automaton();
-        bool Parsing(std::string& inputExpression);
+        ParsingResult Parsing(std::string const & inputExpression);
 
         inline void lookBackCursorIndex(int nbRemovedSymbols)
         {
@@ -32,11 +38,11 @@ class Automaton
     private:
         std::size_t cursorIndex; // used for tracking look ahead symbol (in yellow in the example picture)
 
-        void init(std::string& inputExpression);
-        void lexicalAnalysis(std::string& inputExpression);
+        void init(std::string const & inputExpression);
+        void lexicalAnalysis(std::string const & inputExpression);
         void clean();
         void deleteVectors();
         void clearVectors();
-        bool isActionAccepted();
+        ParsingResult isActionAccepted();
         void printCurrentSituation();
 };

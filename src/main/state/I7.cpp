@@ -5,7 +5,7 @@
 #include "state/State.hpp"
 #include "lexer/Symbol.hpp"
 
-bool I7::Action(Symbol* a)
+ParsingResult I7::Action(Symbol* a)
 {
     if (
         a->ident == PLUS ||
@@ -23,7 +23,7 @@ bool I7::Action(Symbol* a)
     {
         throw NoActionException();
     }
-    return false; // not accepting
+    return ParsingResult(); // not accepting
 }
 
 // r2) E -> E + E

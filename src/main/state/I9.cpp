@@ -5,7 +5,7 @@
 #include "state/State.hpp"
 #include "util/util.hpp"
 
-bool I9::Action(Symbol* a)
+ParsingResult I9::Action(Symbol* a)
 {
     if (
         a->ident == PLUS ||
@@ -20,7 +20,7 @@ bool I9::Action(Symbol* a)
     {
         throw NoActionException();
     }
-    return false; // not accepting
+    return ParsingResult(); // not accepting
 }
 
 // r4) E -> ( E )
