@@ -13,12 +13,12 @@ int main(int argc, char** argv)
     // declare default expression to be recognized
     std::string inputExpression("(1+34)*123");
 
-    cout << "You have entered " << argc
+    std::cout << "You have entered " << argc
         << " arguments:" << "\n";
   
     for (int i = 0; i < argc; ++i)
     {
-        cout << "argv[" << i << "]: " << argv[i] << "\n";
+        std::cout << "argv[" << i << "]: " << argv[i] << "\n";
     }
 
     if (argc > 1)
