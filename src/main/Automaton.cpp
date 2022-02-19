@@ -55,6 +55,8 @@ void Automaton::init(string const & inputExpression)
 
 void Automaton::lexicalAnalysis(std::string const & inputExpression)
 {
+    printInputExpression(inputExpression);
+
     // create list of symbols with lexer
     Lexer l(inputExpression);
     Symbol * s;
@@ -79,6 +81,20 @@ void Automaton::lexicalAnalysis(std::string const & inputExpression)
     states.push_back(new I9(*this));
     
     printVector("states", states);
+}
+
+void Automaton::printInputExpression(std::string const & inputExpression)
+{
+    std::string logLine = "";
+    #ifdef COLORS
+    logLine += LIGHT_ORANGE;
+    #endif
+    logLine += "===> Input expression: ";
+    logLine += inputExpression;
+    #ifdef COLORS
+    logLine += NO_COLOR;
+    #endif
+    std::cout << logLine << std::endl;
 }
 
 ParsingResult Automaton::Parsing(std::string const & inputExpression)

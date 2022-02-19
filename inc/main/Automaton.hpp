@@ -45,4 +45,5 @@ class Automaton
         void clearVectors();
         ParsingResult isActionAccepted();
         void printCurrentSituation();
+        void printInputExpression(std::string const & inputExpression);
 };
