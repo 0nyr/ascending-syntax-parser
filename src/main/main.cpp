@@ -33,10 +33,8 @@ int main(int argc, char** argv)
     std::cout << vectorToString<int>(testvect) << std::endl;
 
     // check if the expression is valid
-    Automaton automaton = Automaton(
-        inputExpression
-    );
-    bool isExpressionValid = automaton.Parsing();
+    Automaton automaton = Automaton();
+    bool isExpressionValid = automaton.Parsing(inputExpression);
     if (isExpressionValid)
     {
         std::cout<<"Expression is valid"<<std::endl;

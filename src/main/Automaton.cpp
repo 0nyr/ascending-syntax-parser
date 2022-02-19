@@ -1,20 +1,60 @@
-#include <iostream>
-#include <string>
-
 #include "exception/NoActionException.hpp"
 #include "lexer/Lexer.hpp"
 #include "Automaton.hpp"
 #include "state/State.hpp" // resolve circular dependency
 #include "util/util.hpp"
 
-Automaton::Automaton(string& inputExpression)
+#include <iostream>
+#include <string>
+
+Automaton::Automaton()
+{}
+
+Automaton::~Automaton()
 {
-    // init attributes 
+    clean();
+}
+
+void Automaton::clean()
+{
+    deleteVectors();
+    clearVectors();
+}
+
+void Automaton::deleteVectors()
+{
+    // free relevant vectors memory
+    for (State* state : states)
+    {
+        delete state;
+    }
+    for (Symbol* symbol : symbols)
+    {
+        delete symbol;
+    }
+}
+
+void Automaton::clearVectors()
+{
+    states.clear();
+    symbols.clear();
+    stateStack.clear();
+    symbolStack.clear();
+}
+
+void Automaton::init(string& inputExpression)
+{
+    // erase old stuff
+    clean();
+
+    // init new stuff
     cursorIndex = 0;
 
-    // Lexical Analysis
-    // chain of symbols and stack
+    lexicalAnalysis(inputExpression);
+}
 
+void Automaton::lexicalAnalysis(std::string& inputExpression)
+{
     // create list of symbols with lexer
     Lexer l(inputExpression);
     Symbol * s;
@@ -26,9 +66,7 @@ Automaton::Automaton(string& inputExpression)
 
     printVector("symbols", symbols);
 
-    // LR(1) Ascending Syntax Analysis
     // states and state stack
-
     states.push_back(new I0(*this));
     states.push_back(new I1(*this));
     states.push_back(new I2(*this));
@@ -43,13 +81,10 @@ Automaton::Automaton(string& inputExpression)
     printVector("states", states);
 }
 
-Automaton::~Automaton(){
-    states.clear();
-    symbols.clear();
-}
-
-bool Automaton::Parsing()
+bool Automaton::Parsing(std::string& inputExpression)
 {
+    init(inputExpression);
+
     // LR(1) parsing 
     // WARN: Don't get mixed up between stacks and arrays.
     stateStack.push_back(states[cursorIndex]);

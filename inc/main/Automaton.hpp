@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 
 //#include "state/State.hpp" --> Use forward declaration
 #include "lexer/Symbol.hpp"
@@ -7,6 +6,8 @@
 // forward declaration, 
 // then #include "state/State.hpp" in file
 class State; // solves circular dependency
+
+#include <vector>
 
 class Automaton
 {
@@ -17,9 +18,9 @@ class Automaton
         std::vector<State*> states;
         std::vector<State*> stateStack;
 
-        Automaton(string& inputExpression);
+        Automaton();
         ~Automaton();
-        bool Parsing();
+        bool Parsing(std::string& inputExpression);
 
         inline void lookBackCursorIndex(int nbRemovedSymbols)
         {
@@ -31,6 +32,11 @@ class Automaton
     private:
         std::size_t cursorIndex; // used for tracking look ahead symbol (in yellow in the example picture)
 
+        void init(std::string& inputExpression);
+        void lexicalAnalysis(std::string& inputExpression);
+        void clean();
+        void deleteVectors();
+        void clearVectors();
         bool isActionAccepted();
         void printCurrentSituation();
 };
