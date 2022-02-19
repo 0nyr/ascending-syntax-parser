@@ -20,7 +20,7 @@ ECHO = @echo # @echo hides this command in terminal, not its output
 
 CC=g++
 GDB_DEBUGGER_FLAGS=-g
-PERSONAL_COMPIL_FLAGS=-D DEBUG # use own flags, see util.hpp
+PERSONAL_COMPIL_FLAGS=-D DEBUG -D COLORS # use own flags, see util.hpp
 CFLAGS=-I $(INC_MAIN) -march=native -O3 $(PERSONAL_COMPIL_FLAGS) $(GDB_DEBUGGER_FLAGS)
 LDLIBS=
 LDFLAGS=--ansi --pedantic -Wall --std=c++11

@@ -122,13 +122,26 @@ ParsingResult Automaton::isActionAccepted()
 
 void Automaton::printCurrentSituation()
 {
-    std::string logLine;
-    logLine = vectorToString(stateStack);
-    int nbMissingSpaces = 30 - logLine.size();
+    std::string logLine = "";
+
+    // get stateStack
+    #ifdef COLORS
+    logLine += TURQUOISE;
+    #endif
+    logLine += vectorToString(stateStack);
+    int nbMissingSpaces = 50 - logLine.size();
+
+    #ifdef COLORS
+    logLine += PALE_BLUE;
+    #endif
+    // get symbolStack
     for (int i = 0; i < nbMissingSpaces; i++)
         logLine += " ";
     logLine += vectorToString(symbolStack);
 
+    #ifdef COLORS
+    logLine += LIGHT_YELLOW;
+    #endif
     // print lookup, check if cursorIndex is within bounds of symbols vector
     logLine += "[";
     if (
@@ -138,6 +151,10 @@ void Automaton::printCurrentSituation()
         logLine += symbols[cursorIndex]->ToString();
     }
     logLine += "]";
+
+    #ifdef COLORS
+    logLine += NO_COLOR; 
+    #endif
     std::cout << logLine << std::endl;
 }
 

@@ -12,6 +12,7 @@
 #define GREY "\e[38;5;8m"
 #define SILVER "\e[38;5;7m"
 #define LIGHT_BLUE "\e[38;5;32m"
+#define LIGHT_YELLOW "\e[38;5;228m"
 
 #define BOLD "\e[1m"
 #define UNDERLINE "\e[4m"
