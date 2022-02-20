@@ -39,6 +39,7 @@ class Automaton
         std::size_t cursorIndex; // used for tracking look ahead symbol (in yellow in the example picture)
 
         void init(std::string const & inputExpression);
+        void checkInputExpressionChars(std::string const & inputExpression);
         void lexicalAnalysis(std::string const & inputExpression);
         void clean();
         void deleteVectors();

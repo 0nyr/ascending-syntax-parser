@@ -1,8 +1,11 @@
 #include "exception/NoActionException.hpp"
+#include "exception/InvalidCharException.hpp"
+#include "exception/WrongSymbolException.hpp"
 #include "lexer/Lexer.hpp"
 #include "Automaton.hpp"
 #include "state/State.hpp" // resolve circular dependency
 #include "util/util.hpp"
+#include "util/exception.hpp"
 
 #include <iostream>
 #include <string>
@@ -53,9 +56,41 @@ void Automaton::init(string const & inputExpression)
     lexicalAnalysis(inputExpression);
 }
 
+void Automaton::checkInputExpressionChars(
+    std::string const & inputExpression
+) {
+    // check if every char is valid
+    char const validChars[] = {
+        '(', ')', '*', '+', '0', '1', '2', 
+        '3', '4', '5', '6', '7', '8', '9'
+    };
+    for (auto & ch : inputExpression)
+    {
+        // check if current char validity
+        bool isCharValid = false;
+        for (auto & validCh : validChars)
+        {
+            if (ch == validCh) {
+                isCharValid = true;
+                break;
+            }
+        }
+        
+        // if invalid, throw error
+        if (!isCharValid)
+        {
+            std::string errorMessage = "Invalid char (" 
+                + std::string(&ch) 
+                + "). A char unknown to the grammar was provided.";
+            throw InvalidCharException(errorMessage);
+        }
+    }
+}
+
 void Automaton::lexicalAnalysis(std::string const & inputExpression)
 {
     printInputExpression(inputExpression);
+    checkInputExpressionChars(inputExpression); // can throw error
 
     // create list of symbols with lexer
     Lexer l(inputExpression);
@@ -99,7 +134,16 @@ void Automaton::printInputExpression(std::string const & inputExpression)
 
 ParsingResult Automaton::Parsing(std::string const & inputExpression)
 {
-    init(inputExpression);
+    // perform cleaning, checking and syntax analysis
+    try
+    {
+        init(inputExpression);
+    }
+    catch (const InvalidCharException& error) 
+    {
+        logException(error);
+        return ParsingResult();
+    }
 
     // LR(1) parsing 
     // WARN: Don't get mixed up between stacks and arrays.
@@ -116,9 +160,15 @@ ParsingResult Automaton::Parsing(std::string const & inputExpression)
         }
         catch (NoActionException& error)
         {
-            std::cout<<"No action for this symbol"<<std::endl;
+            logException(error);
             return parsingResult;
         }
+        catch (WrongSymbolException& error)
+        {
+            logException(error);
+            return parsingResult;
+        }
+
         cursorIndex++; // must be placed before printing
         if(!parsingResult.isParsingSuccessful)
         {

@@ -7,8 +7,8 @@
 class Lexer {
 
    public:
-      Lexer(string s) : flux(s), head(0), buffer(nullptr) { }
-      ~Lexer() { }
+      Lexer(string s) : flux(s), head(0), buffer(nullptr) {};
+      ~Lexer() {};
 
       Symbol * Consult();
       void Advance();
