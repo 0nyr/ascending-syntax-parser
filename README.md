@@ -4,6 +4,8 @@ This project is a **specific LR(1) (LALR optimized) Ascending Syntax Parser** fo
 
 > circular imports, templating, template specialisation, state DP, singleton DP, GDB debugging
 
+> [GitHub repo](https://github.com/0nyr/ascending-syntax-parser)
+
 ![make run output example](./img/make_run_example.png)
 
 This program has been tested and built for Linux (tested on Ubuntu 20.04).
